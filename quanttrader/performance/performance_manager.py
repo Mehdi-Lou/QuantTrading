@@ -26,7 +26,7 @@ class PerformanceManager(object):
             self._symbols.append(data_key)
         else:           # CLZ20, CLZ21
             self._symbols.extend(data.columns)
-
+            
     #  or each sid
     def reset(self):
         self._realized_pnl = 0.0
@@ -36,7 +36,7 @@ class PerformanceManager(object):
         self._equity.name = 'total'
 
         self._df_positions = pd.DataFrame(columns=self._symbols + ['cash'], dtype=np.float64)
-        self._df_trades = pd.DataFrame(np.empty(0, dtype=np.dtype([('amount', np.int64), ('price', np.float64), ('symbol', np.str)])))
+        self._df_trades = pd.DataFrame(np.empty(0, dtype=np.dtype([('amount', np.int64), ('price', np.float64), ('symbol', str)])))
         # self._df_trades.amount = self._df_trades.amount.astype(int)     # pyfolio transactions
 
     def on_fill(self, fill_event):
